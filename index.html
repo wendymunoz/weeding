@@ -272,7 +272,7 @@ if(top<window.innerHeight-100){sec.classList.add('visible');}
 });
 });
 
-// Countdown elegante tipo calendario
+// Countdown dinámico con segundos en movimiento
 const fechaBoda=new Date("July 17, 2026 16:00:00").getTime();
 
 setInterval(()=>{
@@ -287,13 +287,20 @@ return;
 const dias=Math.floor(diff/(1000*60*60*24));
 const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
 const minutos=Math.floor((diff%(1000*60*60))/(1000*60));
+const segundos=Math.floor((diff%(1000*60))/1000);
 
-let texto="";
-if(dias>0) texto+=dias+" días ";
-if(horas>0) texto+=horas+" h ";
-texto+=minutos+" min";
+// Formato siempre 2 dígitos
+const format=(n)=> n<10 ? "0"+n : n;
 
-document.getElementById("countdown").innerHTML="Faltan " + texto;
+document.getElementById("countdown").innerHTML = `
+  <div style="display:flex;justify-content:center;gap:10px;font-weight:600;">
+    <div>${format(dias)}d</div>
+    <div>${format(horas)}h</div>
+    <div>${format(minutos)}m</div>
+    <div style="color:var(--verde-oscuro);">${format(segundos)}s</div>
+  </div>
+`;
+
 },1000);
 
 function confirmarWhatsApp(){
