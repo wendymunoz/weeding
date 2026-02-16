@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wendy & Sebastián | 17 de Julio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-pastel: #dbeadf;
+      --verde-suave: #eef7f1;
+      --verde-texto: #5f7d6b;
+      --blanco: #ffffff;
+      --gris: #6b6b6b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fbf9;
+      color: var(--gris);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--verde-texto);
+      font-weight: 400;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .hero {
+      background: linear-gradient(var(--verde-pastel), #f8fbf9);
+      padding: 120px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .versiculo {
+      font-style: italic;
+      max-width: 600px;
+      margin: 20px auto 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      gap: 30px;
+    }
+
+    @media(min-width:768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--blanco);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .timeline li {
+      list-style: none;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background: var(--verde-texto);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      width: 250px;
+      text-align: center;
+    }
+
+    footer {
+      background: var(--blanco);
+      padding: 40px 20px;
+      font-size: 0.9rem;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Wendy & Sebastián</h1>
+    <p>17 de julio</p>
+    <p class="versiculo">"Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto." – Colosenses 3:14</p>
+  </section>
+
+  <section>
+    <div class="container grid grid-2">
+      <div>
+        <img src="https://via.placeholder.com/500x600" alt="Nosotros">
+      </div>
+      <div>
+        <h2>Nuestra Historia</h2>
+        <p>Dios escribió nuestra historia con amor, paciencia y propósito. Queremos celebrar contigo el inicio de esta nueva etapa que comienza bajo Su bendición.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--blanco);">
+    <div class="container grid grid-3">
+      <div class="card">
+        <h3>Ceremonia</h3>
+        <p>Lugar: [Nombre del lugar]</p>
+        <p>Hora: 4:00 PM</p>
+        <p>Dirección: [Dirección completa]</p>
+      </div>
+      <div class="card">
+        <h3>Recepción</h3>
+        <p>Lugar: [Nombre del salón]</p>
+        <p>Hora: 6:00 PM</p>
+      </div>
+      <div class="card">
+        <h3>Código de Vestimenta</h3>
+        <p>Elegante – tonos naturales y pasteles</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--verde-suave);">
+    <div class="container">
+      <h2>Cronograma</h2>
+      <ul class="timeline">
+        <li>4:00 PM – Ceremonia</li>
+        <li>5:30 PM – Sesión de fotos</li>
+        <li>6:00 PM – Recepción</li>
+        <li>7:00 PM – Cena</li>
+        <li>9:00 PM – Primer baile</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Lista de Regalos</h2>
+      <p>Tu presencia es nuestro mejor regalo, pero si deseas bendecirnos:</p>
+      <button onclick="window.open('#','_blank')">Ver lista de regalos</button>
+      <p style="margin-top:15px;">Cuenta bancaria: [Banco – Número de cuenta]</p>
+    </div>
+  </section>
+
+  <section style="background: var(--verde-pastel);">
+    <div class="container">
+      <h2>Confirmar Asistencia</h2>
+      <p>Ingresa tu código de invitado</p>
+      <input type="text" id="codigo" placeholder="Código único">
+      <br>
+      <button onclick="confirmarAsistencia()">Confirmar asistencia</button>
+      <p id="mensaje" style="margin-top:15px;"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Con amor, Wendy & Sebastián – 17 de julio</p>
+  </footer>
+
+  <script>
+    function confirmarAsistencia() {
+      const codigo = document.getElementById('codigo').value.trim();
+      const mensaje = document.getElementById('mensaje');
+
+      if(codigo !== '') {
+        mensaje.innerHTML = "Gracias por confirmar tu asistencia 💚";
+      } else {
+        mensaje.innerHTML = "Por favor ingresa tu código.";
+      }
+    }
+  </script>
+
+</body>
+</html>
