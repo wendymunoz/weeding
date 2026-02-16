@@ -1,203 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wendy & Sebastián | 17 de Julio 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --verde-pastel: #dbeadf;
-      --verde-suave: #eef7f1;
-      --verde-oscuro: #5f7d6b;
-      --blanco: #ffffff;
-      --gris: #6b6b6b;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastian & Wendy | 17 de Julio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+<style>
+:root{
+--verde-pastel:#dbeadf;
+--verde-suave:#eef7f1;
+--verde-oscuro:#5f7d6b;
+--blanco:#ffffff;
+--gris:#6b6b6b;
+}
 
-    body {
-      font-family:'Inter',sans-serif;
-      background:#f9fcfa;
-      color:var(--gris);
-      scroll-behavior:smooth;
-    }
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+background:#f9fcfa;
+color:var(--gris);
+overflow-x:hidden;
+}
 
-    h1,h2,h3 { font-family:'Playfair Display',serif; color:var(--verde-oscuro); }
-    section { padding:100px 20px; text-align:center; }
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--verde-oscuro)}
+section{padding:100px 20px;text-align:center;opacity:0;transform:translateY(40px);transition:1s}
+section.visible{opacity:1;transform:translateY(0)}
 
-    .hero {
-      background:linear-gradient(var(--verde-pastel), #f9fcfa);
-      padding:150px 20px;
-    }
+/* SOBRE ANIMADO */
+#overlay{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:linear-gradient(var(--verde-pastel),#f9fcfa);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+flex-direction:column;
+}
 
-    .hero h1 {
-      font-family:'Great Vibes',cursive;
-      font-size:4.5rem;
-      margin-bottom:20px;
-    }
+.sobre{
+width:300px;height:200px;
+background:white;
+border-radius:10px;
+position:relative;
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
+cursor:pointer;
+}
 
-    .fecha-grande { font-size:1.5rem; letter-spacing:4px; margin-bottom:20px; }
-    .versiculo { font-style:italic; max-width:700px; margin:auto; }
+.sobre::before{
+content:'';
+position:absolute;
+top:-100px;
+left:0;
+width:0;height:0;
+border-left:150px solid transparent;
+border-right:150px solid transparent;
+border-bottom:100px solid white;
+transition:1s;
+}
 
-    .divider { width:80px; height:2px; background:var(--verde-oscuro); margin:25px auto; opacity:0.3; }
-    .container { max-width:1100px; margin:auto; }
-    .grid { display:grid; gap:40px; }
+.sobre.abierto::before{
+transform:rotateX(180deg);
+transform-origin:bottom;
+}
 
-    @media(min-width:768px){
-      .grid-2 { grid-template-columns:1fr 1fr; align-items:center; }
-      .grid-3 { grid-template-columns:repeat(3,1fr); }
-      .gallery { grid-template-columns:repeat(3,1fr); }
-    }
+.sello{
+margin-top:20px;
+font-family:'Great Vibes',cursive;
+font-size:1.5rem;
+color:var(--verde-oscuro);
+}
 
-    .card {
-      background:white;
-      padding:40px;
-      border-radius:25px;
-      box-shadow:0 15px 35px rgba(0,0,0,0.05);
-      transition:0.3s;
-    }
+.hero{
+background:linear-gradient(var(--verde-pastel),#f9fcfa);
+padding:150px 20px;
+}
+.hero h1{
+font-family:'Great Vibes',cursive;
+font-size:4.5rem;
+margin-bottom:20px;
+}
 
-    .card:hover { transform:translateY(-5px); }
-    img { width:100%; border-radius:25px; }
-    .countdown { font-size:1.3rem; margin-top:20px; font-weight:500; }
-    .timeline li { list-style:none; margin-bottom:15px; }
+.divider{width:80px;height:2px;background:var(--verde-oscuro);margin:25px auto;opacity:0.3}
 
-    button {
-      background:var(--verde-oscuro);
-      color:white;
-      border:none;
-      padding:14px 30px;
-      border-radius:40px;
-      cursor:pointer;
-      margin-top:20px;
-      transition:0.3s;
-    }
+.container{max-width:1100px;margin:auto}
+.grid{display:grid;gap:40px}
 
-    button:hover { opacity:0.8; }
-    input { padding:14px; border-radius:40px; border:1px solid #ccc; width:260px; text-align:center; margin-top:15px; }
-    iframe { width:100%; height:350px; border:0; border-radius:25px; margin-top:30px; }
-    footer { background:white; padding:50px 20px; font-size:0.9rem; }
-  </style>
+@media(min-width:768px){
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.gallery{grid-template-columns:repeat(3,1fr)}
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,0.05);
+transition:0.4s;
+}
+.card:hover{transform:translateY(-8px)}
+
+.gallery img{
+border-radius:25px;
+transition:0.5s;
+}
+.gallery img:hover{
+transform:scale(1.05);
+filter:brightness(1.1);
+}
+
+button{
+background:var(--verde-oscuro);
+color:white;
+border:none;
+padding:14px 30px;
+border-radius:40px;
+cursor:pointer;
+margin-top:20px;
+transition:0.3s;
+}
+button:hover{opacity:0.8}
+
+iframe{width:100%;height:350px;border:0;border-radius:25px;margin-top:30px}
+
+footer{background:white;padding:50px 20px;font-size:0.9rem}
+
+</style>
 </head>
 <body>
 
+<!-- SOBRE INICIAL -->
+<div id="overlay">
+<div class="sobre" onclick="abrirInvitacion()"></div>
+<div class="sello">Haz clic para abrir</div>
+</div>
+
+<!-- MÚSICA -->
+<iframe width="0" height="0" src="https://www.youtube.com/embed/H-fjDoVqNno?autoplay=1&loop=1&playlist=H-fjDoVqNno" frameborder="0" allow="autoplay"></iframe>
+
 <section class="hero">
-  <h1>Wendy & Sebastián</h1>
-  <div class="fecha-grande">17 • JULIO • 2026</div>
-  <div class="divider"></div>
-  <p class="versiculo">"Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto." – Colosenses 3:14</p>
-  <p class="versiculo" style="margin-top:15px;">"El que halla esposa halla el bien y alcanza el favor del Señor." – Proverbios 18:22</p>
-  <div class="countdown" id="countdown"></div>
+<h1>Wendy & Sebastián</h1>
+<p>17 • JULIO • 2026</p>
+<div class="divider"></div>
+<p>"Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto." – Colosenses 3:14</p>
+<p style="margin-top:15px;">"El Señor ha hecho grandes cosas por nosotros; estamos alegres." – Salmo 126:3</p>
+<div id="countdown" style="margin-top:20px;font-weight:500"></div>
 </section>
 
 <section>
-  <h2>Con la bendición de nuestros padres</h2>
-  <div class="divider"></div>
-  <p><strong>Familia del novio:</strong> Edgar Rosas & Rosario Parillo</p>
-  <p><strong>Familia de la novia:</strong> Milton Muñoz & Liliana Urquiza</p>
-  <p style="margin-top:20px;"><strong>Padrinos:</strong> Lidia y Wilbert Rojas</p>
+<h2>Detalles del Evento</h2>
+<div class="divider"></div>
+<div class="container grid grid-3">
+<div class="card">
+<h3>Ceremonia & Recepción</h3>
+<p>Sede 02: Encantada de Villa | Jardines Perú</p>
+<p>Alameda Marqués de la Bula 101, Chorrillos</p>
+<p>4:00 PM</p>
+</div>
+<div class="card">
+<h3>Padrinos</h3>
+<p>Lidia y Wilbert Rojas</p>
+</div>
+<div class="card">
+<h3>Con la bendición de</h3>
+<p>Edgar Rosas & Rosario Parillo</p>
+<p>Milton Muñoz & Liliana Urquiza</p>
+</div>
+</div>
+
+<iframe src="https://www.google.com/maps?q=Alameda+Marqués+de+la+Bula+101,+Chorrillos+15067&output=embed"></iframe>
 </section>
 
-<section style="background:white;">
-  <h2>Detalles del Evento</h2>
-  <div class="divider"></div>
-  <div class="container grid grid-3">
-    <div class="card">
-      <h3>Ceremonia & Recepción</h3>
-      <p><strong>Lugar:</strong> Sede 02: Encantada de Villa | Jardines Perú</p>
-      <p><strong>Dirección:</strong> Alameda Marqués de la Bula 101, Chorrillos 15067</p>
-      <p><strong>Hora:</strong> 4:00 PM</p>
-    </div>
-    <div class="card">
-      <h3>Código de Vestimenta</h3>
-      <p>Elegante – tonos naturales y pasteles</p>
-    </div>
-    <div class="card">
-      <h3>Versículo del Día</h3>
-      <p>"Por tanto, lo que Dios ha unido, no lo separe el hombre." – Marcos 10:9</p>
-    </div>
-  </div>
-
-  <iframe
-    src="https://www.google.com/maps?q=Alameda+Marqués+de+la+Bula+101,+Chorrillos+15067&output=embed">
-  </iframe>
-</section>
-
-<section style="background:var(--verde-suave);">
-  <h2>Cronograma</h2>
-  <div class="divider"></div>
-  <ul class="timeline">
-    <li>4:00 PM – Ceremonia</li>
-    <li>5:30 PM – Sesión de fotos</li>
-    <li>6:00 PM – Recepción</li>
-    <li>7:00 PM – Cena</li>
-    <li>9:00 PM – Primer baile</li>
-  </ul>
+<section style="background:var(--verde-suave)">
+<h2>Nuestra Galería</h2>
+<div class="divider"></div>
+<div class="container grid gallery">
+<img src="https://via.placeholder.com/400x500">
+<img src="https://via.placeholder.com/400x500">
+<img src="https://via.placeholder.com/400x500">
+</div>
 </section>
 
 <section>
-  <h2>Nuestra Galería</h2>
-  <div class="divider"></div>
-  <div class="container grid gallery">
-    <img src="https://via.placeholder.com/400x500">
-    <img src="https://via.placeholder.com/400x500">
-    <img src="https://via.placeholder.com/400x500">
-  </div>
-</section>
-
-<section style="background:white;">
-  <h2>Lista de Regalos</h2>
-  <div class="divider"></div>
-  <p>Tu presencia es nuestro mejor regalo. Si deseas bendecirnos, pronto compartiremos nuestro enlace de lista de regalos.</p>
-</section>
-
-<section style="background:var(--verde-pastel);">
-  <h2>Confirmar Asistencia</h2>
-  <div class="divider"></div>
-  <p id="saludo"></p>
-  <input type="text" id="codigo" placeholder="Código único">
-  <br>
-  <button onclick="confirmarAsistencia()">Confirmar asistencia</button>
-  <p id="mensaje" style="margin-top:15px;"></p>
+<h2>Confirmar Asistencia</h2>
+<div class="divider"></div>
+<button onclick="confirmarWhatsApp()">Confirmar por WhatsApp</button>
 </section>
 
 <footer>
-  <p>Con amor, Wendy & Sebastián – 17 de julio 2026</p>
+<p>Con amor, Sebastian & Wendy – 17 de julio 2026</p>
 </footer>
 
 <script>
-  const fechaBoda = new Date("July 17, 2026 16:00:00").getTime();
-  const countdown = document.getElementById("countdown");
+function abrirInvitacion(){
+document.querySelector('.sobre').classList.add('abierto');
+setTimeout(()=>{document.getElementById('overlay').style.display='none';},1000);
+}
 
-  setInterval(() => {
-    const ahora = new Date().getTime();
-    const diferencia = fechaBoda - ahora;
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    countdown.innerHTML = `Faltan ${dias} días y ${horas} horas para nuestro gran día`;
-  }, 1000);
+// Animación al hacer scroll
+const sections=document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+const top=sec.getBoundingClientRect().top;
+if(top<window.innerHeight-100){sec.classList.add('visible');}
+});
+});
 
-  function obtenerParametro(nombre) {
-    const params = new URLSearchParams(window.location.search);
-    return params.get(nombre);
-  }
+// Countdown
+const fechaBoda=new Date("July 17, 2026 16:00:00").getTime();
+setInterval(()=>{
+const ahora=new Date().getTime();
+const diff=fechaBoda-ahora;
+const dias=Math.floor(diff/(1000*60*60*24));
+const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+document.getElementById("countdown").innerHTML=`Faltan ${dias} días y ${horas} horas`;
+},1000);
 
-  const invitado = obtenerParametro('nombre');
-  if(invitado) {
-    document.getElementById('saludo').innerHTML = `Querido/a ${invitado}, nos encantará contar contigo en este día tan especial 💚`;
-  }
-
-  function confirmarAsistencia() {
-    const codigo = document.getElementById('codigo').value.trim();
-    const mensaje = document.getElementById('mensaje');
-
-    if(codigo !== '') {
-      mensaje.innerHTML = "Gracias por confirmar tu asistencia 💚";
-    } else {
-      mensaje.innerHTML = "Por favor ingresa tu código.";
-    }
-  }
+function confirmarWhatsApp(){
+const mensaje=encodeURIComponent("Hola Wendy y Sebastián 💚 Confirmo mi asistencia a su boda.");
+window.open("https://wa.me/51999999999?text="+mensaje,"_blank");
+}
 </script>
 
 </body>
