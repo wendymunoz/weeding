@@ -143,6 +143,43 @@ transition:0.3s;
 }
 button:hover{opacity:0.8}
 
+/* CALENDARIO COUNTDOWN */
+.calendar-countdown{
+margin-top:40px;
+display:flex;
+justify-content:center;
+}
+
+.calendar-card{
+width:200px;
+background:white;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+overflow:hidden;
+font-family:'Playfair Display',serif;
+}
+
+.calendar-header{
+background:var(--verde-oscuro);
+color:white;
+padding:12px;
+font-size:0.9rem;
+letter-spacing:2px;
+}
+
+.calendar-date{
+font-size:4rem;
+padding:20px 0;
+color:var(--verde-oscuro);
+}
+
+.calendar-footer{
+padding:15px;
+font-family:'Inter',sans-serif;
+font-size:0.9rem;
+background:var(--verde-suave);
+}
+
 iframe{width:100%;height:350px;border:0;border-radius:25px;margin-top:30px}
 footer{background:white;padding:50px 20px;font-size:0.9rem}
 
@@ -165,7 +202,13 @@ footer{background:white;padding:50px 20px;font-size:0.9rem}
 <div class="divider"></div>
 <p>"Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto." – Colosenses 3:14</p>
 <p style="margin-top:15px;">"El Señor ha hecho grandes cosas por nosotros; estamos alegres." – Salmo 126:3</p>
-<div id="countdown" style="margin-top:20px;font-weight:500"></div>
+<div class="calendar-countdown">
+  <div class="calendar-card">
+    <div class="calendar-header">JULIO 2026</div>
+    <div class="calendar-date">17</div>
+    <div class="calendar-footer" id="countdown"></div>
+  </div>
+</div>
 </section>
 
 <section>
@@ -229,14 +272,28 @@ if(top<window.innerHeight-100){sec.classList.add('visible');}
 });
 });
 
-// Countdown
+// Countdown elegante tipo calendario
 const fechaBoda=new Date("July 17, 2026 16:00:00").getTime();
+
 setInterval(()=>{
 const ahora=new Date().getTime();
 const diff=fechaBoda-ahora;
+
+if(diff<=0){
+document.getElementById("countdown").innerHTML="¡Hoy es el gran día! 💍";
+return;
+}
+
 const dias=Math.floor(diff/(1000*60*60*24));
 const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-document.getElementById("countdown").innerHTML=`Faltan ${dias} días y ${horas} horas`;
+const minutos=Math.floor((diff%(1000*60*60))/(1000*60));
+
+let texto="";
+if(dias>0) texto+=dias+" días ";
+if(horas>0) texto+=horas+" h ";
+texto+=minutos+" min";
+
+document.getElementById("countdown").innerHTML="Faltan " + texto;
 },1000);
 
 function confirmarWhatsApp(){
