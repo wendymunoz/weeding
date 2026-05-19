@@ -1180,16 +1180,16 @@ footer {
           <h4>Depósito bancario</h4>
           <p>BCP – Cuenta Ahorros<br><strong style="color:#3a5a50;">191-10678602-06-5</strong></p>
           <p>BCP – CCI<br><strong style="color:#3a5a50;">002-191-11067860206555</strong><br><small style="font-size:0.75rem;color:#aaa;">A nombre de Sebastián Rosas</small></p>
-        </div><BR><BR>
+        </div>
         <div class="regalo-card">
           <span class="rc-icon">🎁</span>
           <h4>Lista de regalos</h4>
-          <p>Si deseas hacernos un regalo, puedes hacerlo a través de Falabella Novios, donde encontrarás nuestra lista de opciones.</p>
+          <p>Si deseas hacernos un regalo, podrás hacerlo próximamente a través de Falabella Novios, donde encontrarás nuestra lista de opciones.</p>
         </div>
       </div>
       <div class="reveal" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
         <button class="btn-secondary" onclick="copyAccount()">Copiar cuenta bancaria</button>
-        <button class="btn-primary" onclick="alert('Proximamente disponible la lista de tienda.')">Ver lista de regalos</button>
+        <button class="btn-primary" disabled="disabled" onclick="alert('Proximamente disponible la lista de tienda.')">Ver lista de regalos</button>
       </div>
       <p id="copy-confirm" style="display:none; margin-top:16px; font-size:0.82rem; color:var(--verde);">¡Número de cuenta copiado!</p>
     </div>
@@ -1303,7 +1303,7 @@ function showError(msg) {
 
 /* ---- COPIAR CUENTA ---- */
 function copyAccount() {
-  navigator.clipboard.writeText('191-10678602-06-5').then(() => {
+  navigator.clipboard.writeText('Cuenta Ahorros 191-10678602-06-5 CCI 002-191-11067860206555').then(() => {
     const el = document.getElementById('copy-confirm');
     el.style.display = 'block';
     setTimeout(() => el.style.display = 'none', 3000);
