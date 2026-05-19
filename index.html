@@ -641,9 +641,10 @@ section {
  
 .regalo-options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-bottom: 28px;
+  width: 100%;
 }
  
 .regalo-card {
@@ -1303,7 +1304,7 @@ function showError(msg) {
 
 /* ---- COPIAR CUENTA ---- */
 function copyAccount() {
-  navigator.clipboard.writeText('Cuenta Ahorros 191-10678602-06-5 CCI 002-191-11067860206555').then(() => {
+  navigator.clipboard.writeText('BCP Cuenta Ahorros 191-10678602-06-5\nCCI 002-191-11067860206555').then(() => {
     const el = document.getElementById('copy-confirm');
     el.style.display = 'block';
     setTimeout(() => el.style.display = 'none', 3000);
