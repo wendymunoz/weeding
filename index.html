@@ -290,40 +290,53 @@ nav.hidden-nav { transform: translateY(-100%); }
   gap: 20px;
   margin: 20px 0 32px;
 }
-.hero-date-num {
+.hero-date-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 20px 0 32px;
+}
+.hero-date-num,
+.hero-date-year {
   font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
+  font-size: 3.8rem;
   font-weight: 500;
   color: var(--verde);
   line-height: 1;
 }
 .hero-date-sep {
-  width: 1px; height: 40px;
-  background: rgba(74,124,111,0.25);
+  width: 1px; height: 56px;
+  background: rgba(74,124,111,0.3);
 }
 .hero-date-month { text-align: center; }
 .hero-date-month .dm-label {
   display: block;
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--dorado);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   font-weight: 400;
 }
 .hero-date-month .dm-val {
   display: block;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 3.8rem;
+  font-weight: 500;
+  color: var(--verde);
+  line-height: 1;
+}
+
+.hero-weekday {
   font-family: 'EB Garamond', serif;
   font-style: italic;
-  font-size: 1.2rem;
-  color: var(--verde);
-}
-.hero-date-year {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--gris-claro);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--dorado);
   letter-spacing: 4px;
+  margin: 8px 0 28px;
 }
 
 .divider-ornament {
@@ -741,9 +754,9 @@ footer {
 
   /* Hero */
   .hero { padding: 80px 20px 48px; }
-  .hero-date-num { font-size: 2.2rem; }
-  .hero-date-month .dm-val { font-size: 1.05rem; }
-  .hero-date-year { font-size: 0.88rem; letter-spacing: 3px; }
+  .hero-date-num, .hero-date-year, .hero-date-month .dm-val { font-size: 2.4rem; }
+  .hero-date-sep { height: 40px; }
+  .hero-date-block { gap: 16px; }
   .hero-verse-block { padding: 18px 20px; }
   .hero-verse-block p { font-size: 1.05rem; }
   .countdown-cards { gap: 6px; }
@@ -819,9 +832,7 @@ body { font-weight: 400; color: var(--gris); }
 .hero-names { font-weight: 400; } /* Great Vibes solo tiene 400 */
 
 /* Fecha hero */
-.hero-date-num  { font-weight: 600; }
-.hero-date-month .dm-val { font-weight: 500; }
-.hero-date-year { font-weight: 400; color: #555; }
+.hero-date-num, .hero-date-year, .hero-date-month .dm-val { font-weight: 500; }
 
 /* Versículo */
 .hero-verse-block p { font-weight: 500; color: #2a4a42; }
@@ -928,6 +939,8 @@ body { font-weight: 400; color: var(--gris); }
     <div class="hero-date-sep"></div>
     <span class="hero-date-year">2026</span>
   </div>
+
+  <p class="hero-weekday">Viernes</p>
 
   <div class="divider-ornament">
     <div class="divider-line"></div>
